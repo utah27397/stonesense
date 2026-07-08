@@ -1441,12 +1441,12 @@ void saveScreenshot()
     al_clear_to_color(ssConfig.backcol);
     paintboard();
     //get filename
-    char filename[32] = {0};
+    char filename[64] = {0};
     FILE* fp;
     int index = 1;
     //search for the first screenshot# that does not exist already
     while(true) {
-        snprintf(filename, sizeof(filename), "screenshot%i.png", index);
+        snprintf(filename, sizeof(filename), "exports/screenshot%i.png", index);
 
         fp = fopen(filename, "r");
         if( fp != 0) {
@@ -1476,12 +1476,12 @@ void saveScreenshot()
 void saveImage(ALLEGRO_BITMAP* image)
 {
     //get filename
-    char filename[25] = {0};
+    char filename[64] = {0};
     FILE* fp;
     int index = 1;
     //search for the first screenshot# that does not exist already
     while(true) {
-        sprintf(filename, "Image%i.png", index);
+        snprintf(filename, sizeof(filename), "exports/Image%i.png", index);
 
         fp = fopen(filename, "r");
         if( fp != 0) {
@@ -1502,12 +1502,12 @@ void saveMegashot(bool tall)
 
     draw_textf_border(font, uiColor(1), ssState.ScreenW/2, ssState.ScreenH/2, ALLEGRO_ALIGN_CENTRE, "saving large screenshot...");
     al_flip_display();
-    char filename[32] = {0};
+    char filename[64] = {0};
     FILE* fp;
     int index = 1;
     //search for the first screenshot# that does not exist already
     while(true) {
-        snprintf(filename, sizeof(filename), "screenshot%i.png", index);
+        snprintf(filename, sizeof(filename), "exports/screenshot%i.png", index);
         fp = fopen(filename, "r");
         if( fp != 0) {
             fclose(fp);

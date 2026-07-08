@@ -227,7 +227,7 @@ bool ContentLoader::Load()
             }
         }
     }
-    //DumpStringVector("professiondump.txt", &professionStrings);
+    //DumpStringVector("exports/professiondump.txt", &professionStrings);
     draw_loading_message("Reading Hairstyles");
     gatherStyleIndices(&df::global::world->raws);
     /*

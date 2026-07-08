@@ -93,7 +93,7 @@ void LogError(const char* msg, ...)
     char buf[512] = {0};
     vsprintf(buf, msg, arglist);
     Core::printerr("%s", buf);
-    FILE* fp = fopen( "Stonesense.log", "a");
+    FILE* fp = fopen( "exports/Stonesense.log", "a");
     if(fp) {
         vfprintf( fp, msg, arglist );
     }
@@ -123,7 +123,7 @@ void LogVerbose(const char* msg, ...)
     char buf[512] = {0};
     vsprintf(buf, msg, arglist);
     Core::printerr("%s", buf);
-    FILE* fp = fopen( "Stonesense.log", "a");
+    FILE* fp = fopen( "exports/Stonesense.log", "a");
     if(fp) {
         vfprintf( fp, msg, arglist );
     }
@@ -186,7 +186,7 @@ void benchmark()
         reloadPosition();
     }
 
-    FILE* fp = fopen("benchmark.txt", "w" );
+    FILE* fp = fopen("exports/benchmark.txt", "w" );
     if(!fp) {
         return;
     }

@@ -57,12 +57,12 @@ void dumpSegment()
 
     read_segment(NULL);
     //get filename
-    char filename[20] ={0};
+    char filename[40] ={0};
     FILE* fp;
     int index = 1;
     //search for the first screenshot# that does not exist already
     while(true){
-        sprintf(filename, "screenshot%i.png", index);
+        snprintf(filename, sizeof(filename), "exports/screenshot%i.png", index);
 
         fp = fopen(filename, "r");
         if( fp != 0)
@@ -138,7 +138,7 @@ void dumpSegment()
 //}
 //
 //void DumpCreatureNamesToDisk(){
-//    /*FILE* fp = fopen("dump.txt", "w");
+//    /*FILE* fp = fopen("exports/dump.txt", "w");
 //    if(!fp) return;
 //    for(uint32_t j=0; j < v_creatureNames.size(); j++){
 //    fprintf(fp, "%i:%s\n",j, v_creatureNames[j].id);
@@ -146,7 +146,7 @@ void dumpSegment()
 //    fclose(fp);*/
 //}
 //void DumpProfessionsToDisk(){
-//    FILE* fp = fopen("dump.txt", "w");
+//    FILE* fp = fopen("exports/dump.txt", "w");
 //    if(!fp) return;
 //    string proffStr;
 //    for(int j=0; (proffStr = contentLoader->professionStrings[j]) != "" ; j++){
@@ -252,17 +252,17 @@ void DumpInfo(color_ostream & out, std::vector<std::string> & params)
 {
     string & p1 = params[0];
     if(p1 == "dumpitems") {
-        out.print("dumping equippable item names to 'itemdump.txt'...\n");
-        DumpItemNamesToDisk("itemdump.txt");
+        out.print("dumping equippable item names to 'exports/itemdump.txt'...\n");
+        DumpItemNamesToDisk("exports/itemdump.txt");
         out.print("...done\n");
     } else if(p1 == "dumptiles") {
-        out.print("dumping equippable item names to 'tiledump.txt'...\n");
-        DumpTileTypes("tiledump.txt");
+        out.print("dumping equippable item names to 'exports/tiledump.txt'...\n");
+        DumpTileTypes("exports/tiledump.txt");
         out.print("...done\n");
     } else if(p1 == "genterrain") {
         if(params.size() > 1) {
-            out.print("generating 'terrain.xml'...\n");
-            GenerateTerrainXml("terrain.xml", params[1], GetBasicShape(params[1]));
+            out.print("generating 'exports/terrain.xml'...\n");
+            GenerateTerrainXml("exports/terrain.xml", params[1], GetBasicShape(params[1]));
             out.print("...done\n");
         } else {
             out.printerr("invalid argument\n");

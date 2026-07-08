@@ -44,7 +44,7 @@ TerrainConfiguration::TerrainConfiguration()
 
 void DumpInorganicMaterialNamesToDisk()
 {
-    FILE* fp = fopen("dump.txt", "w");
+    FILE* fp = fopen("exports/dump.txt", "w");
     if (!fp) {
         return;
     }
